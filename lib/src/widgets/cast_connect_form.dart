@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:playeroff_cast/playeroff_cast.dart';
 import 'package:playeroff_cast/src/widgets/cast_strings.dart';
+import 'package:playeroff_cast/src/widgets/playeroff_logo.dart';
 
 /// Shows [CastConnectForm] in a bottom sheet and returns the session it
 /// opened, or null when the person left without connecting.
@@ -139,7 +140,9 @@ class _CastConnectFormState extends State<CastConnectForm> {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Icon(Icons.tv, size: 40, color: theme.colorScheme.onSurfaceVariant),
+        // The mark the person is looking at on the TV: it says, before any
+        // word is read, which app the code comes from.
+        const Center(child: PlayeroffLogo(size: 48)),
         const SizedBox(height: 12),
         Text(
           strings.connectTitle,

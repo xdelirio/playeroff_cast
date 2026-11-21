@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-/// PlayerOFF's mark, for the button that leads to connecting with a TV: the
-/// person looks for the same logo they see on the TV's screen.
+/// PlayerOFF's mark, shown where the app asks for the TV's code: the person
+/// sees the same logo that is on the TV's screen.
 ///
 /// It is the brand's own artwork, in its own colours, so it does not follow
 /// the theme; [size] is its height.

@@ -7,7 +7,7 @@ import 'package:playeroff_cast/playeroff_cast.dart';
 @immutable
 class CastStrings {
   const CastStrings.en()
-    : connectTitle = 'Connect to a TV',
+    : connectTitle = 'Connect to PlayerOFF',
       connectHint =
           'Open PlayerOFF on the TV and type the code it shows on screen.',
       codeLabel = 'Code',
@@ -54,7 +54,7 @@ class CastStrings {
       tvGeneric = 'TV';
 
   const CastStrings.es()
-    : connectTitle = 'Conectar con un TV',
+    : connectTitle = 'Conectar con PlayerOFF',
       connectHint =
           'Abre PlayerOFF en el TV y escribe el código que muestra en pantalla.',
       codeLabel = 'Código',
