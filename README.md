@@ -82,6 +82,11 @@ CastSessionBuilder(
 - A command the TV refuses is told in a snack bar when there is a `Scaffold`
   above. A session that ends is told to the app through `onEnded`.
 - The event stream is open only while one of these widgets is on screen.
+- For a look of the app's own, build on the parts these widgets are made
+  of: `CastSessionBuilder` (live state), `CastArtwork` (poster),
+  `CastStrings` (words, `formatCastDuration`) and `sendCastCommand` (runs a
+  command, tells the person when it is refused). The `CastSession` is the
+  controller: state, commands and streams.
 - `example/` is an app that connects, sends a video and shows the remote.
 
 ## What it takes care of
