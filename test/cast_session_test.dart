@@ -471,13 +471,34 @@ void main() {
         session.events.listen((_) {});
         async.flushMicrotasks();
         server.streams.single.event('playback', null);
-        async.flushMicrotasks();
+        async.elapse(const Duration(seconds: 15));
 
         server.streams.single.drop();
         async.elapse(const Duration(seconds: 1));
 
         expect(server.streams, hasLength(2));
         expect(polls(), 0);
+      });
+    });
+
+    test('a stream that keeps dying young is backed by polling', () {
+      following((async, session) {
+        answerPolls();
+        session.events.listen((_) {});
+        async.flushMicrotasks();
+
+        // Opens, says where things are, and is cut right away — each time.
+        for (var i = 0; i < 3; i++) {
+          server.streams.last
+            ..event('playback', null)
+            ..drop();
+          async.elapse(Duration(seconds: 3 << i));
+        }
+
+        // Not one reopening a second: the waits doubled (3, 6, 12 s), with
+        // playback asked for meanwhile.
+        expect(server.streams, hasLength(4));
+        expect(polls(), 1 + 2 + 4);
       });
     });
 

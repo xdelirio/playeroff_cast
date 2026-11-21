@@ -10,6 +10,7 @@ final class CastTimings {
     this.pollInterval = const Duration(seconds: 3),
     this.reconnectDelay = const Duration(seconds: 1),
     this.maxRetryWindow = const Duration(seconds: 60),
+    this.minHealthyStream = const Duration(seconds: 10),
   });
 
   /// How long a request may take before it counts as a network failure.
@@ -27,4 +28,9 @@ final class CastTimings {
 
   /// The longest the client keeps polling before it tries the stream again.
   final Duration maxRetryWindow;
+
+  /// How long a stream has to last to count as working. One that closes
+  /// sooner — a proxy that cuts long responses, say — is treated like one
+  /// that never opened, so reopening it does not become a tight loop.
+  final Duration minHealthyStream;
 }

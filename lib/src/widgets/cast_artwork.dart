@@ -36,9 +36,10 @@ class CastArtwork extends StatelessWidget {
         color: colors.surfaceContainerHighest,
         child: switch (media?.poster) {
           final poster? => Image.network(
+            // Without the cast's headers: those are for the video's host
+            // (they may carry its cookies), and the TV does not send them
+            // for the poster either.
             poster.toString(),
-            // The same headers the TV fetches it with.
-            headers: media!.headers.isEmpty ? null : media.headers,
             fit: BoxFit.cover,
             width: double.infinity,
             height: double.infinity,

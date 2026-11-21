@@ -262,19 +262,24 @@ final class CastSession {
 
   bool _current(int generation) => generation == _generation && !isOver;
 
-  /// Keeps the event stream open; whenever it cannot, polls for a while and
-  /// tries again, doubling that while each time the stream gives nothing.
+  /// Keeps the event stream open; whenever it cannot — or the stream does
+  /// not last — polls for a while and tries again, doubling that while each
+  /// time.
   Future<void> _follow(int generation) async {
     var window = _timings.pollInterval;
     while (_current(generation)) {
+      final opened = _clock();
       final outcome = await _listenOnce(generation);
       if (!_current(generation)) return;
+      final lasted = _clock().difference(opened) >= _timings.minHealthyStream;
 
       switch (outcome) {
-        case _StreamOutcome.dropped:
+        case _StreamOutcome.dropped when lasted:
           window = _timings.pollInterval;
           await _wait(_timings.reconnectDelay);
-        case _StreamOutcome.silent:
+        // Never opened, or opened and died at once: either way the stream
+        // is not to be counted on for now.
+        case _StreamOutcome.dropped || _StreamOutcome.silent:
           await _pollFor(window, generation);
           window = window * 2 > _timings.maxRetryWindow
               ? _timings.maxRetryWindow
