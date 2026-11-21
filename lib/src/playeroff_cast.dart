@@ -32,8 +32,9 @@ final class PlayeroffCast {
     );
   }
 
-  /// The public server, as the API's guide uses it.
-  static final defaultBaseUrl = Uri.parse('https://beta.playeroff.app');
+  /// The public server. The API's guide writes its examples against
+  /// `beta.playeroff.app`; the one receivers register with is this.
+  static final defaultBaseUrl = Uri.parse('https://playeroff.app');
 
   final Uri baseUrl;
   final CastTimings timings;

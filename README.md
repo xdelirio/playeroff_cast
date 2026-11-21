@@ -110,8 +110,9 @@ CastSessionBuilder(
 - A new cast replaces the current one; there is no queue.
 - `CastMedia.headers` are applied only by the Android TV receiver
   (`session.receiver.appliesHeaders`).
-- The default server is the one the guide uses, `https://beta.playeroff.app`;
-  pass `baseUrl` for another. A code only works on the server that issued it.
+- The default server is `https://playeroff.app` (the guide's examples say
+  `beta.playeroff.app`; the real one has no `beta`). Pass `baseUrl` for
+  another. A code only works on the server that issued it.
 
 ## Checking against the real server
 
