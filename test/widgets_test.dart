@@ -108,6 +108,16 @@ void main() {
     });
   });
 
+  testWidgets('the logo is drawn from the package at the asked height', (
+    tester,
+  ) async {
+    await tester.pumpWidget(const Center(child: PlayeroffLogo(size: 32)));
+    await tester.pumpAndSettle();
+
+    expect(tester.takeException(), isNull);
+    expect(tester.getSize(find.byType(PlayeroffLogo)).height, 32);
+  });
+
   group('CastConnectForm', () {
     Finder connectButton() =>
         find.widgetWithText(FilledButton, _strings.connect);

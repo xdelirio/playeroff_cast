@@ -16,3 +16,4 @@ export 'src/widgets/cast_mini_bar.dart';
 export 'src/widgets/cast_remote.dart';
 export 'src/widgets/cast_session_builder.dart';
 export 'src/widgets/cast_strings.dart';
+export 'src/widgets/playeroff_logo.dart';

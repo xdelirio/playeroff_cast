@@ -68,6 +68,7 @@ CastSessionBuilder(
 - There is no theme of their own: colours, shapes and type come from
   `Theme.of(context)`.
 - `CastConnectForm` is the sheet's content, for a dialog or a page.
+- `PlayeroffLogo` is the brand's mark, for the app's own "connect" button.
 - The poster is the one of the video this session sent
   (`session.sentMedia`): the API does not report it, so a video sent from
   another phone shows a placeholder.

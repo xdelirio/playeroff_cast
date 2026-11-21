@@ -5,3 +5,4 @@
 - Widgets: `showCastConnectSheet` / `CastConnectForm`, `CastRemote`,
   `CastMiniBar` and `CastSessionBuilder`, drawn with the ambient theme, in
   English and Spanish.
+- `PlayeroffLogo`: the brand's mark as a widget.
